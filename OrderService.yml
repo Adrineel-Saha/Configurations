@@ -17,8 +17,7 @@ spring:
     mapper:
       sort-properties-alphabetically: false
     date-format: dd-MM-yyyy HH:mm:ss
-    serialization:
-      WRITE_DATES_AS_TIMESTAMPS: false
+    write-dates-as-timestamps: false
 
 eureka:
   client:
