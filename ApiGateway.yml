@@ -1,6 +1,25 @@
 server:
   port: 9191
 
+spring:
+  cloud:
+    gateway:
+      routes[0]:
+        id: UserService
+        uri: lb://UserService
+        predicates[0]:
+          Path: api/users/**
+      routes[1]:
+        id: ProductService
+        uri: lb://ProductService
+        predicates[0]:
+          Path: api/products/**
+      routes[2]:
+        id: OrderService
+        uri: lb://OrderService 
+        predicates[0]:
+          Path: api/orders/**
+
 eureka:
   client:
     serviceUrl:
