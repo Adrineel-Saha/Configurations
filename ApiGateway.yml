@@ -4,19 +4,20 @@ server:
 spring:
   cloud:
     gateway:
-      routes:
-        - id: UserService
-          uri: lb://USERSERVICE
-          predicates:
-            - Path=/api/users/**
-        - id: ProductService
-          uri: lb://PRODUCTSERVICE
-          predicates:
-            - Path=/api/products/**
-        - id: OrderService
-          uri: lb://ORDERSERVICE
-          predicates:
-            - Path=/api/orders/**
+      mvc:
+        routes:
+          - id: UserService
+            uri: lb://USERSERVICE
+            predicates:
+              - Path=/api/users/**
+          - id: ProductService
+            uri: lb://PRODUCTSERVICE
+            predicates:
+              - Path=/api/products/**
+          - id: OrderService
+            uri: lb://ORDERSERVICE
+            predicates:
+              - Path=/api/orders/**
             
 eureka:
   client:
