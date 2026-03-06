@@ -1,8 +1,24 @@
 server:
   port: 9191
 
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: UserService
+          uri: lb://USERSERVICE
+          predicates:
+            - Path=/api/users/**
+        - id: ProductService
+          uri: lb://PRODUCTSERVICE
+          predicates:
+            - Path=/api/products/**
+        - id: OrderService
+          uri: lb://ORDERSERVICE
+          predicates:
+            - Path=/api/orders/**
+            
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-``
