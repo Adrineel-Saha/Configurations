@@ -4,23 +4,22 @@ server:
 spring:
   cloud:
     gateway:
-      routes[0]:
-        id: USERSERVICE
-        uri: lb://USERSERVICE
-        predicates[0]:
-          Path: api/users/**
-      routes[1]:
-        id: PRODUCTSERVICE
-        uri: lb://PRODUCTSERVICE
-        predicates[0]:
-          Path: api/products/**
-      routes[2]:
-        id: ORDERSERVICE
-        uri: lb://ORDERSERVICE
-        predicates[0]:
-          Path: api/orders/**
+      routes:
+        - id: userservice
+          uri: lb://USERSERVICE
+          predicates:
+            - Path=/api/users/**
+        - id: productservice
+          uri: lb://PRODUCTSERVICE
+          predicates:
+            - Path=/api/products/**
+        - id: orderservice
+          uri: lb://ORDERSERVICE
+          predicates:
+            - Path=/api/orders/**
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+``
