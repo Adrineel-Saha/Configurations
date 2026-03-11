@@ -2,11 +2,15 @@ server:
   port: 9191
 
 spring:
+  application:
+    name: ApiGateway
+
   cloud:
     gateway:
       server:
         webmvc:
           routes:
+            # === Business routes (as you already had) ===
             - id: UserService
               uri: lb://USERSERVICE
               predicates:
@@ -19,6 +23,44 @@ spring:
               uri: lb://ORDERSERVICE
               predicates:
                 - Path=/api/orders/**
+
+            # === Swagger/OpenAPI docs proxied through the Gateway ===
+            # Userservice OpenAPI JSON
+            - id: userservice-docs
+              uri: lb://USERSERVICE
+              predicates:
+                - Path=/userservice/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
+            # Productservice OpenAPI JSON
+            - id: productservice-docs
+              uri: lb://PRODUCTSERVICE
+              predicates:
+                - Path=/productservice/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
+            # Orderservice OpenAPI JSON
+            - id: orderservice-docs
+              uri: lb://ORDERSERVICE
+              predicates:
+                - Path=/orderservice/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
+# Single UI at the Gateway that lists multiple service specs
+springdoc:
+  swagger-ui:
+    # Optional: customize UI path (default also works: /swagger-ui.html)
+    path: /swagger-ui.html
+    urls:
+      - name: User Service
+        url: /userservice/v3/api-docs
+      - name: Product Service
+        url: /productservice/v3/api-docs
+      - name: Order Service
+        url: /orderservice/v3/api-docs
 
 eureka:
   client:
