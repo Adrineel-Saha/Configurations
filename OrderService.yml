@@ -24,7 +24,7 @@ eureka:
 # Actuator endpoints for Circuit Breaker
 management:
   health:
-    circuitbreaker:
+    circuitbreakers:
       enabled: true
   endpoints:
     health:
@@ -33,7 +33,7 @@ management:
 # Circuit Breaker configuration
 resilience4j:
   circuitbreaker:
-    instance:
+    instances:
       OrderService:
         registerHealthIndicator: true
         failureRateThreshold: 50
