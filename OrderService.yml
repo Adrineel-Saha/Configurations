@@ -23,12 +23,12 @@ eureka:
 
 # Actuator endpoints for Circuit Breaker
 management:
+  endpoint:
+    health:
+      show-details: always
   health:
     circuitbreakers:
       enabled: true
-  endpoints:
-    health:
-      show-details: always
 
 # Circuit Breaker configuration
 resilience4j:
