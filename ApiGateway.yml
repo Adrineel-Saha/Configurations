@@ -2,6 +2,7 @@ spring:
   cloud:
     gateway:
       globalcors:
+        add-to-sample-url-handler-mapping: true
         corsConfigurations:
           '/**':
             allowedOriginPatterns: 
@@ -11,6 +12,7 @@ spring:
               - POST
               - PUT
               - DELETE
+              - OPTIONS
             allowedHeaders:
               - "*"
             allowCredentials: true
