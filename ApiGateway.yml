@@ -12,6 +12,9 @@ spring:
               - PUT
               - DELETE
               - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
       server:
         webmvc:
           routes:
