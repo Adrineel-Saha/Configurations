@@ -11,6 +11,7 @@ spring:
               - POST
               - PUT
               - DELETE
+              - OPTIONS
       server:
         webmvc:
           routes:
