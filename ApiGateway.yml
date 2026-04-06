@@ -4,13 +4,16 @@ spring:
       globalcors:
         corsConfigurations:
           '/**':
-            allowedOrigins: 
+            allowedOriginPatterns: 
               - http://localhost:4200
             allowedMethods: 
               - GET
               - POST
               - PUT
               - DELETE
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
       server:
         webmvc:
           routes:
