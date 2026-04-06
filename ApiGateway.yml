@@ -1,10 +1,7 @@
 spring:
-  mvc:
-    dispatch-options-request: true
   cloud:
     gateway:
       globalcors:
-        add-to-simple-url-handler-mapping: true
         corsConfigurations:
           '/**':
             allowedOriginPatterns: 
@@ -14,10 +11,6 @@ spring:
               - POST
               - PUT
               - DELETE
-              - OPTIONS
-            allowedHeaders:
-              - "*"
-            allowCredentials: true
       server:
         webmvc:
           routes:
