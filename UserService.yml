@@ -13,8 +13,3 @@ spring:
   jackson:
     mapper:
       sort-properties-alphabetically: false
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
