@@ -1,5 +1,6 @@
 spring:
   mvc:
+    dispatch-options-request: true
     cors:
       mappings:
         "/**":
