@@ -34,6 +34,10 @@ spring:
               uri: lb://ORDERSERVICE
               predicates:
                 - Path=/api/orders/**
+            - id: AuthService
+              uri: lb://AUTHSERVICE
+              predicates:
+                - Path=/api/auth/**
 
             # === Swagger/OpenAPI docs proxied through the Gateway ===
             # Userservice OpenAPI JSON
@@ -60,6 +64,14 @@ spring:
               filters:
                 - StripPrefix=1
 
+            # Authservice OpenAPI JSON
+            - id: authservice-docs
+              uri: lb://AUTHSERVICE
+              predicates:
+                - Path=/authservice/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
 # Single UI at the Gateway that lists multiple service specs
 springdoc:
   swagger-ui:
@@ -72,6 +84,8 @@ springdoc:
         url: /productservice/v3/api-docs
       - name: Order Service
         url: /orderservice/v3/api-docs
+      - name: Auth Service
+        url: /authservice/v3/api-docs
 
 eureka:
   client:
