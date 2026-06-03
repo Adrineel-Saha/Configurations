@@ -13,4 +13,4 @@ spring:
       
 app:
   jwt:
-    secret: QWRyaW5lZWxfU2FoYV8xOC0xMC0yMDAx
+    secret: bXlTdXBlclNlY3JldEtleUZvckpXVFRoYXRJc0F0TGVhc3QyNTZCaXRzTG9uZzEyMzQ1
