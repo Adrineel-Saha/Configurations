@@ -26,20 +26,14 @@ spring:
               uri: lb://USERSERVICE
               predicates:
                 - Path=/api/users/**
-              filters:
-                - AuthenticationFilter
             - id: ProductService
               uri: lb://PRODUCTSERVICE
               predicates:
                 - Path=/api/products/**
-              filters:
-                - AuthenticationFilter
             - id: OrderService
               uri: lb://ORDERSERVICE
               predicates:
                 - Path=/api/orders/**
-              filters:
-              - AuthenticationFilter
             - id: AuthService
               uri: lb://AUTHSERVICE
               predicates:
