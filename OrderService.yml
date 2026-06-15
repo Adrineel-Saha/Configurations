@@ -15,6 +15,12 @@ spring:
       sort-properties-alphabetically: false
     date-format: dd-MM-yyyy HH:mm:ss
     write-dates-as-timestamps: false
+  kafka:
+    consumer:
+      bootstrap-servers: http://localhost:9092
+      group-id: orderServiceGroup
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
 
 # Actuator endpoints for Circuit Breaker
 management:
