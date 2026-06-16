@@ -21,6 +21,14 @@ spring:
       group-id: orderServiceGroup
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: *
+            use:
+              type:
+                headers: false
 
 # Actuator endpoints for Circuit Breaker
 management:
