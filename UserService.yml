@@ -14,12 +14,12 @@ spring:
     mapper:
       sort-properties-alphabetically: false
   kafka:
-    userproducer:
+    producer:
       bootstrap-servers: http://localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 app:
   kafka:
-    producer:
+    userproducer:
       topic: user-service-topic
