@@ -25,3 +25,5 @@ app:
   kafka:
     userproducer:
       topic: user-service-topic
+    productproducer:
+      topic: product-service-topic
