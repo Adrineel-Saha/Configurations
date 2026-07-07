@@ -21,9 +21,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-app:
-  kafka:
-    userproducer:
-      topic: user-service-topic
-    productproducer:
-      topic: product-service-topic
+# Kafka not implemented — commented out
+#app:
+#  kafka:
+#    userproducer:
+#      topic: user-service-topic
+#    productproducer:
+#      topic: product-service-topic
