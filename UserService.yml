@@ -15,6 +15,11 @@ spring:
       sort-properties-alphabetically: false
   kafka:
    producer:
-     bootstrap-servers: http://localhost:9092
+     bootstrap-servers: localhost:9092
      key-serializer: org.apache.kafka.common.serialization.StringSerializer
      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+     properties:
+      spring:
+        json:
+          type:
+            mapping: "user:com.cognizant.userservice.dtos.UserDTO"
