@@ -27,9 +27,8 @@ spring:
          json:
            trusted:
              packages: "*"
-           use:
-             type:
-               headers: false
+           type:
+              mapping: "user:com.cognizant.orderservice.dtos.UserDTO,product:com.cognizant.orderservice.dtos.ProductDTO"
 
 # Actuator endpoints for Circuit Breaker
 management:
