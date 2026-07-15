@@ -1,0 +1,9 @@
+# Shared config applied to ALL services when the active profile is "test".
+# Overrides the shared application.yml. Used by the CI/CD pipeline, which
+# starts Eureka and the Config Server before running the service tests.
+app:
+  kafka:
+    userproducer:
+      topic: user-service-topic-test
+    productproducer:
+      topic: product-service-topic-test
