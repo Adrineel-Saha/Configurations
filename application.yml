@@ -27,3 +27,9 @@ app:
      topic: user-service-topic
    productproducer:
      topic: product-service-topic
+
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  level:
+    root: INFO
