@@ -30,6 +30,6 @@ app:
 
 logging:
   file:
-    name: logs/${spring.application.name}.log
+    name: C:/Microservices/logs/${spring.application.name}/${spring.application.name}-${server.port}.log
   level:
     root: INFO
