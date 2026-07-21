@@ -1,7 +1,4 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:TestInventoryServiceDatabase
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: create-drop
+  data:
+    mongodb:
+      database: TestInventoryServiceDatabase
