@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/inventorydb 
+      uri: mongodb://localhost:27017/InventoryServiceDatabase
       auto-index-creation: true     # builds the @Indexed unique index on productId
   jackson:
     mapper:
