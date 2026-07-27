@@ -43,9 +43,12 @@ management:
     health:
       show-details: always
 
-# Circuit Breaker configuration
+# Circuit Breaker + Rate Limiter configuration
 resilience4j:
+  # Make the rate limiter aspect run OUTSIDE the circuit breaker (higher order = outer / runs first).
+  # This way a rate-limit rejection surfaces as a 429 and is NOT swallowed/counted by the circuit breaker.
   circuitbreaker:
+    circuit-breaker-aspect-order: 2
     instances:
       OrderMicroservice:
         registerHealthIndicator: true
@@ -56,3 +59,10 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
         slidingWindowType: COUNT_BASED
+  ratelimiter:
+    rate-limiter-aspect-order: 1
+    instances:
+      OrderServiceRateLimiter:
+        limit-for-period: 5      # permits per cycle
+        limit-refresh-period: 2s   # cycle length
+        timeout-duration: 0        # 0 = reject immediately, don't queue
