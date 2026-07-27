@@ -31,4 +31,4 @@ resilience4j:
       UserServiceRateLimiter:
         limit-for-period: 5      # permits per cycle
         limit-refresh-period: 2s   # cycle length
-        timeout-duration: 2s        # 0 = reject immediately, don't queue
+        timeout-duration: 0        # 0 = reject immediately, don't queue
