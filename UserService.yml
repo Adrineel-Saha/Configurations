@@ -23,3 +23,12 @@ spring:
         json:
           type:
             mapping: "user:com.cognizant.userservice.dtos.UserDTO"
+
+# Rate Limiter configuration
+resilience4j:
+  ratelimiter:
+    instances:
+      UserServiceRateLimiter:
+        limit-for-period: 5      # permits per cycle
+        limit-refresh-period: 2s   # cycle length
+        timeout-duration: 0        # 0 = reject immediately, don't queue
