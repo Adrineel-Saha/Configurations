@@ -14,3 +14,12 @@ spring:
 app:
   jwt:
     secret: bXlTdXBlclNlY3JldEtleUZvckpXVFRoYXRJc0F0TGVhc3QyNTZCaXRzTG9uZzEyMzQ1
+
+# Rate Limiter configuration
+resilience4j:
+  ratelimiter:
+    instances:
+      AuthServiceRateLimiter:
+        limit-for-period: 5      # permits per cycle
+        limit-refresh-period: 2s   # cycle length
+        timeout-duration: 0        # 0 = reject immediately, don't queue
