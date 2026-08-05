@@ -1,3 +1,12 @@
 spring:
   mongodb:
     database: TestInventoryServiceDatabase
+
+# Flapdoodle embedded MongoDB version for the @DataMongoTest repository slice tests.
+# The Spring Boot 4 Flapdoodle auto-config ships no default version and fails to
+# start embedded Mongo without this property.
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 7.0.14
