@@ -6,3 +6,44 @@ spring:
   jackson:
     mapper:
       sort-properties-alphabetically: false
+  kafka:
+   consumer:
+     bootstrap-servers: http://localhost:9092
+     group-id: inventoryServiceGroup
+     auto-offset-reset: earliest
+     key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+     value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+     properties:
+       spring:
+         json:
+           trusted:
+             packages: "*"
+           type:
+              mapping: "product:com.cognizant.inventoryservice.dtos.ProductDTO"
+
+# Actuator endpoints for Circuit Breaker
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+# Circuit Breaker configuration
+resilience4j:
+  circuitbreaker:
+    instances:
+      InventoryMicroservice:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
